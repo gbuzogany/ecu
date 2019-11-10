@@ -1,4 +1,6 @@
-import twisted.internet.protocol
+import grpc
+import media_pb2
+import media_pb2_grpc
 
 class MediaClient:
 	def __init__(self, config):

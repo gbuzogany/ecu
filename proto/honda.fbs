@@ -1,0 +1,17 @@
+namespace dash;
+
+table statsMessage {
+  battVoltage:float;
+  coolantTemp:float;
+  airIntakeTemp:float;
+  manifoldPressure:float;
+  speed:float;
+  tps:float;
+  rpm:int;
+  neutral:int;
+  engineRunning:int;
+  injDur: float;
+  ignAdv: float;
+}
+
+root_type statsMessage;

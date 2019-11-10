@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package mediaplayer;
+
+service MediaPlayer {
+  rpc PlayStatusChanged (PlayStatus) returns (StatusResponse) {}
+  rpc MediaChanged (MediaItem) returns (StatusResponse) {}
+}
+
+message PlayStatus {
+  string playStatus = 1;
+}
+
+message MediaItem {
+  string title = 1;
+  string artist = 2;
+  string album = 3;
+}
+
+message StatusResponse {
+  int32 status = 1;
+}

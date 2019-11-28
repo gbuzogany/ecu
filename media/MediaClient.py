@@ -12,8 +12,9 @@ class MediaClient:
 			response = stub.PlayStatusChanged(media_pb2.PlayStatus(playStatus=status))
 			print(response.status)
 
-	def notifyPlayStatusChanged(self, mediaItem):
+	def notifyMediaChanged(self, mediaItem):
 		with grpc.insecure_channel('localhost:50051') as channel:
+			stub = media_pb2_grpc.MediaPlayerStub(channel)
 			response = stub.MediaChanged(media_pb2.MediaItem(
 				title=mediaItem['title'],
 				artist=mediaItem['artist'],
@@ -32,7 +33,7 @@ class MediaClient:
 
 			elif prop == 'Track':
 				# Available: Album, Duration, Genre, Title, Artist
-				self.notifyPlayStatusChanged({
+				self.notifyMediaChanged({
 					'title': value.get('Title', ''),
 					'artist': value.get('Artist', ''),
 					'album': value.get('Album', '')

@@ -12,14 +12,17 @@ if __name__ == '__main__':
 	with open(config_file) as data_file:
 		config = json.load(data_file)
 
-	dash = DashClient(config)
-	mediaClient = MediaClient(config)
+	dash = DashClient(config['dash'])
+	mediaClient = MediaClient(config['media'])
 
 	begin = datetime.datetime.now()
 	total = 0
 
 	RPM_MIN = 1000
 	RPM_MAX = 11000
+
+	GEAR_MIN = 1
+	GEAR_MAX = 7
 
 	SPEED_MAX = 220
 
@@ -80,6 +83,7 @@ if __name__ == '__main__':
 		pos = (1 + math.cos(total))/2
 		dashData.rpm = int(RPM_MIN + pos * (RPM_MAX - RPM_MIN))
 		dashData.speed = pos * SPEED_MAX
+		dashData.gear = int(GEAR_MIN + pos * (GEAR_MAX - GEAR_MIN))
 
 		dash.UpdateDashData(dashData);
 

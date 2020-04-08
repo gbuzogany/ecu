@@ -39,11 +39,6 @@ message DashExtendedData {
   bool kickstand = 15;
 }
 
-message DashExtendedData {
-	string name = 1;
-	float value = 2;
-}
-
 message PlayStatus {
   string playStatus = 1;
 }

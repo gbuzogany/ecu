@@ -1,2 +1,4 @@
 luma/
 pi/ecu/__pycache__/
+bin/
+dash-control/__pycache__/
